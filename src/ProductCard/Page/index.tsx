@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   Name,
   PageContent,
@@ -9,7 +8,7 @@ import {
 } from "../Styles/index";
 import { useState } from "react";
 import RequestButton from "../../Components/RequestButton";
-
+import { productsRequest } from "../../Services/Table";
 interface Product {
   id: string;
   name: string;
@@ -42,24 +41,9 @@ const ProductCard = ({
   const handleRequest = async () => {
     if (quantity <= 0) return;
     setLoading(true);
-    const requestPayload = {
-      Items: [
-        {
-          ProductId: id,
-          Quantity: quantity,
-        },
-      ],
-    };
-    const token = localStorage.getItem("token");
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
 
     try {
-      await axios.post("http://localhost:5123/consume", requestPayload, config);
+      await productsRequest({ productId: id, quantity });
       setQuantity(0);
     } catch (e) {
       console.log(`error : ${e}`);

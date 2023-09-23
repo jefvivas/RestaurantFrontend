@@ -17,12 +17,10 @@ const LoginPage = () => {
   const handleLogin = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      console.log("a");
       const response = await axios.post("http://localhost:5123/login", {
         Number,
         Password,
       });
-      console.log("ac");
 
       if (response.data && response.data.token) {
         const token = response.data.token;

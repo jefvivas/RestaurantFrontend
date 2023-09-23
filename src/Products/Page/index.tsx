@@ -1,10 +1,10 @@
 import useAuth from "../../Hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import ProductContainer from "../../ProductCard/Page";
 import Navbar from "../../Navbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
+import { getAllProducts } from "../../Services/Product";
 
 interface Product {
   id: string;
@@ -25,20 +25,10 @@ const Products = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (isAuthenticated) {
-        const token = localStorage.getItem("token");
-
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
         try {
-          const response = await axios.get(
-            "http://localhost:5123/product",
-            config
-          );
+          const productsResponse = await getAllProducts();
 
-          setProducts(response.data);
+          setProducts(productsResponse);
         } catch (error) {
           console.error("Error fetching data:", error);
         }

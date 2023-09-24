@@ -1,5 +1,17 @@
 import { useState, useEffect } from "react";
-import { getTableProducts } from "../../Services/Table";
+import { getTableProducts } from "../../../Services/Table";
+import {
+  CloseButton,
+  ItemSection,
+  ModalContent,
+  ModalOverlay,
+  PayButton,
+  PayCloseButtonContainer,
+  PriceSection,
+  ProductLine,
+  ProductList,
+  TotalSection,
+} from "../Styles";
 
 interface Product {
   id: string;
@@ -59,57 +71,45 @@ const Modal = ({ isOpen, closeModal, products }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      onClick={handleCloseModal}
-    >
-      <div
-        style={{
-          backgroundColor: "white",
-          padding: "20px",
-          borderRadius: "5px",
-        }}
-      >
-        <p>Produtos da Tabela:</p>
-        <ul>
+    <ModalOverlay onClick={handleCloseModal}>
+      <ModalContent>
+        <ProductList>
+          <ProductLine>
+            <ItemSection>Item</ItemSection>
+            <PriceSection>Price</PriceSection>
+          </ProductLine>
+
           {tableProducts.length > 0 ? (
             tableProducts.map((product, index) => {
               const matchingProduct = products?.find(
                 (p) => p.id === product.productId
               );
-
               return (
-                <li key={index}>
-                  <p>
-                    Produto:
+                <ProductLine key={index}>
+                  <div>
+                    {product.quantity} x{" "}
                     {matchingProduct ? matchingProduct.name : "Não encontrado"}
-                  </p>
-                  <p>Quantidade: {product.quantity}</p>
-                </li>
+                  </div>
+                  <div>{matchingProduct?.price}</div>
+                </ProductLine>
               );
             })
           ) : (
             <p>Carregando produtos...</p>
           )}
           {totalPrice > 0 && (
-            <li>
-              <p>Total: R$ {totalPrice.toFixed(2)}</p>
-            </li>
+            <ProductLine>
+              <ItemSection>Total:</ItemSection>
+              <TotalSection>R$ {totalPrice.toFixed(2)}</TotalSection>
+            </ProductLine>
           )}
-        </ul>
-        <button onClick={closeModal}>Fechar</button>
-      </div>
-    </div>
+        </ProductList>
+        <PayCloseButtonContainer>
+          <PayButton>Pagar</PayButton>
+          <CloseButton onClick={closeModal}>Fechar</CloseButton>
+        </PayCloseButtonContainer>
+      </ModalContent>
+    </ModalOverlay>
   );
 };
 

@@ -1,10 +1,33 @@
-import { CategoryButton, NavbarContainer } from "../Styles";
+import { CategoryButton, NavbarContainer, BillButton } from "../Styles";
+import { useState } from "react";
+import Modal from "../../Components/Modal";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  category: string;
+}
 interface navbarProps {
   activeCategory: string;
   handleCategoryChange: (category: string) => void;
+  products: Product[] | null;
 }
 
-const Navbar = ({ activeCategory, handleCategoryChange }: navbarProps) => {
+const Navbar = ({
+  activeCategory,
+  handleCategoryChange,
+  products,
+}: navbarProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
     <NavbarContainer>
       <CategoryButton
@@ -25,6 +48,8 @@ const Navbar = ({ activeCategory, handleCategoryChange }: navbarProps) => {
       >
         Service
       </CategoryButton>
+      <BillButton onClick={openModal} />
+      <Modal isOpen={isOpen} closeModal={closeModal} products={products} />
     </NavbarContainer>
   );
 };

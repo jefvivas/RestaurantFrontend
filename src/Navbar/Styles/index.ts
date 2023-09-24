@@ -25,3 +25,15 @@ export const CategoryButton = styled.button`
     text-decoration: underline;
   }
 `;
+
+export const BillButton = styled.button`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+`;

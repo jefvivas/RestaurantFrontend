@@ -68,6 +68,7 @@ const Products = () => {
       <Navbar
         activeCategory={activeCategory}
         handleCategoryChange={handleCategoryChange}
+        products={products}
       />
       {products && (
         <>

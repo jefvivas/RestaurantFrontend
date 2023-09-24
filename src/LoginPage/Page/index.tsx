@@ -1,8 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { InputField, LoginContainer, LoginForm } from "../Styles";
 import RequestButton from "../../Components/RequestButton";
+import { tableLogin } from "../../Services/Login/index";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,19 +11,16 @@ const LoginPage = () => {
     navigate("/products");
   };
 
-  const [Number, setNumber] = useState("");
-  const [Password, setPassword] = useState("");
+  const [number, setNumber] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5123/login", {
-        Number,
-        Password,
-      });
+      const response = await tableLogin({ number, password });
 
-      if (response.data && response.data.token) {
-        const token = response.data.token;
+      if (response.token && response.hasOwnProperty("token")) {
+        const token = response.token;
         localStorage.setItem("token", token);
 
         redirectToOtherPage();
@@ -40,13 +37,13 @@ const LoginPage = () => {
         <InputField
           type="text"
           placeholder="Mesa"
-          value={Number}
+          value={number}
           onChange={(e) => setNumber(e.target.value)}
         />
         <InputField
           type="password"
           placeholder="Senha"
-          value={Password}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <RequestButton onClick={handleLogin} isLoading={false} text="Log in" />

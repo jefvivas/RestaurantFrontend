@@ -1,6 +1,13 @@
-import { CategoryButton, NavbarContainer, BillButton } from "../Styles";
+import {
+  CategoryButton,
+  NavbarContainer,
+  BillButton,
+  BillButtonContainer,
+  BillButtonText,
+} from "../Styles";
 import { useState } from "react";
 import Modal from "../../Components/Modal/Page";
+import { FiClock } from "react-icons/fi";
 
 interface Product {
   id: string;
@@ -48,7 +55,12 @@ const Navbar = ({
       >
         Service
       </CategoryButton>
-      <BillButton onClick={openModal} />
+      <BillButton onClick={openModal}>
+        <BillButtonContainer>
+          <FiClock size={20} />
+          <BillButtonText>Order History</BillButtonText>
+        </BillButtonContainer>
+      </BillButton>
       <Modal isOpen={isOpen} closeModal={closeModal} products={products} />
     </NavbarContainer>
   );

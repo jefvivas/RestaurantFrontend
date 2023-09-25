@@ -7,7 +7,9 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding-top: 350px;
 `;
+
 export const CategoryHeader = styled.h2`
   font-size: 1.5rem;
   margin-top: 0;
@@ -15,15 +17,15 @@ export const CategoryHeader = styled.h2`
 `;
 
 export const GroupContainer = styled.div`
-  background-color: #707070;
+  background-color: #f7f7f7;
   width: 90%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 25px;
-  border: 1px solid #ccc;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

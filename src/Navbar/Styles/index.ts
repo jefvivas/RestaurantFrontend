@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
   position: fixed;
+  display: flex;
   top: 0;
+  left: 0;
+  right: 0;
   background-color: #fff;
   z-index: 100;
   display: flex;
@@ -36,4 +39,13 @@ export const BillButton = styled.button`
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
+`;
+
+export const BillButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const BillButtonText = styled.span`
+  margin-left: 8px;
 `;

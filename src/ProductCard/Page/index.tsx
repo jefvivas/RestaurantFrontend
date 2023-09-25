@@ -5,6 +5,8 @@ import {
   QuantityControlButton,
   QuantityControlWrapper,
   QuantityInput,
+  Description,
+  RequestButtonWrapper,
 } from "../Styles/index";
 import { useState } from "react";
 import RequestButton from "../../Components/RequestButton";
@@ -54,14 +56,17 @@ const ProductCard = ({
   return (
     <PageContent>
       <Name>{name}</Name>
-      <p>Description: {description}</p>
+      <Description> {description}</Description>
       <PriceContainer>
         <div>R$: {price.toFixed(2)}</div>
         <QuantityControlWrapper>
           <QuantityControlButton onClick={handleDecrease}>
             -
           </QuantityControlButton>
-          <QuantityInput type="number" value={quantity} readOnly />
+          <QuantityInput
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
+          />
           <QuantityControlButton onClick={handleIncrease}>
             +
           </QuantityControlButton>

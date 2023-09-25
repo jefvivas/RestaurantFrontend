@@ -1,7 +1,7 @@
 import useAuth from "../../Hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ProductContainer from "../../ProductCard/Page";
+import ProductCard from "../../ProductCard/Page";
 import Navbar from "../../Navbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
 import { getAllProducts } from "../../Services/Product";
@@ -78,7 +78,7 @@ const Products = () => {
               {products
                 .filter((product) => product.category === category)
                 .map((product) => (
-                  <ProductContainer
+                  <ProductCard
                     id={product.id}
                     key={product.id}
                     name={product.name}

@@ -11,12 +11,19 @@ export const PageContent = styled.div`
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 `;
 
 export const Name = styled.p`
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
+`;
+
+export const Description = styled.p`
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #555;
 `;
 
 export const PriceContainer = styled.div`
@@ -30,6 +37,10 @@ export const PriceContainer = styled.div`
 export const QuantityControlWrapper = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const RequestButtonWrapper = styled.div`
+  margin-top: 10px;
 `;
 
 export const QuantityInput = styled.input`

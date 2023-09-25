@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import Spinner from "../Spinner";
-
-interface RequestButtonProps {
-  isLoading: boolean;
-  onClick: (e: React.FormEvent<HTMLButtonElement>) => void;
-  text: string;
-}
+import { RequestButtonProps } from "../../Interfaces";
 
 const RequestButtonWrapper = styled.button`
   background-color: #007bff;

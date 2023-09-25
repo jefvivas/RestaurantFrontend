@@ -10,6 +10,7 @@ export const NavbarContainer = styled.div`
   z-index: 100;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 10px 20px;
   width: 100%;
   height: 5%;
@@ -29,10 +30,9 @@ export const CategoryButton = styled.button`
   }
 `;
 
-export const BillButton = styled.button`
-  position: fixed;
-  top: 20px;
-  right: 20px;
+export const OrderButton = styled.button`
+  top: 0px;
+  right: 0px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -41,11 +41,11 @@ export const BillButton = styled.button`
   cursor: pointer;
 `;
 
-export const BillButtonContainer = styled.div`
+export const OrderButtonContainer = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const BillButtonText = styled.span`
+export const OrderButtonText = styled.span`
   margin-left: 8px;
 `;

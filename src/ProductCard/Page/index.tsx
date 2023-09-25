@@ -6,20 +6,11 @@ import {
   QuantityControlWrapper,
   QuantityInput,
   Description,
-  RequestButtonWrapper,
 } from "../Styles/index";
 import { useState } from "react";
 import RequestButton from "../../Components/RequestButton";
 import { productsRequest } from "../../Services/Table";
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-  quantity: number;
-  setQuantity: (newQuantity: number) => void;
-}
+import { ProductCardProps } from "../../Interfaces";
 
 const ProductCard = ({
   id,
@@ -28,7 +19,7 @@ const ProductCard = ({
   description,
   quantity,
   setQuantity,
-}: Product) => {
+}: ProductCardProps) => {
   const [loading, setLoading] = useState(false);
 
   const handleIncrease = () => {

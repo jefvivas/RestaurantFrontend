@@ -12,25 +12,7 @@ import {
   ProductList,
   TotalSection,
 } from "../Styles";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-}
-
-interface ModalProps {
-  isOpen: boolean;
-  closeModal: () => void;
-  products: Product[] | null;
-}
-
-interface ProductRequestProps {
-  productId: string;
-  quantity: number;
-}
+import { ModalProps, ProductRequestProps } from "../../../Interfaces";
 
 const Modal = ({ isOpen, closeModal, products }: ModalProps) => {
   const [tableProducts, setTableProducts] = useState<ProductRequestProps[]>([]);

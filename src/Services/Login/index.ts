@@ -1,15 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { API_URL } from "../../Constants";
-
-interface loginResponse {
-  message?: string;
-  token?: string;
-}
-
-interface loginProps {
-  number: string;
-  password: string;
-}
+import { loginProps, loginResponse } from "../../Interfaces";
 
 export const tableLogin = async ({
   number,

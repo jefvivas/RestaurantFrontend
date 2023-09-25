@@ -1,26 +1,14 @@
 import {
   CategoryButton,
   NavbarContainer,
-  BillButton,
-  BillButtonContainer,
-  BillButtonText,
+  OrderButton,
+  OrderButtonContainer,
+  OrderButtonText,
 } from "../Styles";
 import { useState } from "react";
 import Modal from "../../Components/Modal/Page";
 import { FiClock } from "react-icons/fi";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-}
-interface navbarProps {
-  activeCategory: string;
-  handleCategoryChange: (category: string) => void;
-  products: Product[] | null;
-}
+import { navbarProps } from "../../Interfaces";
 
 const Navbar = ({
   activeCategory,
@@ -55,12 +43,12 @@ const Navbar = ({
       >
         Service
       </CategoryButton>
-      <BillButton onClick={openModal}>
-        <BillButtonContainer>
+      <OrderButton onClick={openModal}>
+        <OrderButtonContainer>
           <FiClock size={20} />
-          <BillButtonText>Order History</BillButtonText>
-        </BillButtonContainer>
-      </BillButton>
+          <OrderButtonText>Order History</OrderButtonText>
+        </OrderButtonContainer>
+      </OrderButton>
       <Modal isOpen={isOpen} closeModal={closeModal} products={products} />
     </NavbarContainer>
   );

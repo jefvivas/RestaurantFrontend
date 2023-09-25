@@ -5,14 +5,7 @@ import ProductCard from "../../ProductCard/Page";
 import Navbar from "../../Navbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
 import { getAllProducts } from "../../Services/Product";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-}
+import { Product } from "../../Interfaces";
 
 const Products = () => {
   const isAuthenticated = useAuth();

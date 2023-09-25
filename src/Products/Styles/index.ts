@@ -6,8 +6,8 @@ export const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding-top: 350px;
+  height: 100%;
+  padding-top: 5%;
 `;
 
 export const CategoryHeader = styled.h2`

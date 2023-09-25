@@ -1,14 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { API_URL } from "../../Constants";
 import { getToken } from "../../Utils";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-}
+import { Product } from "../../Interfaces";
 
 export const getAllProducts = async (): Promise<Product[]> => {
   const token = getToken();

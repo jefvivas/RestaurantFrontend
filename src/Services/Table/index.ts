@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { API_URL } from "../../Constants";
 import { getToken } from "../../Utils";
 import { ProductRequestItems, ProductRequestProps } from "../../Interfaces";
+import { logError } from "../Log";
 
 export const productsRequest = async ({
   productId,
@@ -23,7 +24,8 @@ export const productsRequest = async ({
 
   try {
     return await axios.post(`${API_URL}/consume`, requestPayload, { headers });
-  } catch (error) {
+  } catch (error: any) {
+    await logError({ type: "consume_error", message: error.message });
     console.log(error);
   }
 };
@@ -39,7 +41,8 @@ export const getTableProducts = async (): Promise<ProductRequestItems> => {
       { headers }
     );
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
+    await logError({ type: "get_table_error", message: error.message });
     return {} as ProductRequestItems;
   }
 };

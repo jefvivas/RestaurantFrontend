@@ -57,3 +57,8 @@ export interface RequestButtonProps {
   onClick: (e: React.FormEvent<HTMLButtonElement>) => void;
   text: string;
 }
+
+export interface logErrorProps {
+  type: string;
+  message: string;
+}

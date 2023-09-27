@@ -13,10 +13,13 @@ import {
   TotalSection,
 } from "../Styles";
 import { ModalProps, ProductRequestProps } from "../../../Interfaces";
+import { useProduct } from "../../../Contexts/Products";
 
-const Modal = ({ isOpen, closeModal, products }: ModalProps) => {
+const Modal = ({ isOpen, closeModal }: ModalProps) => {
   const [tableProducts, setTableProducts] = useState<ProductRequestProps[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+
+  const { products } = useProduct();
 
   const getProducts = async () => {
     const response = await getTableProducts();

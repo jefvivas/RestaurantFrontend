@@ -9,7 +9,6 @@ export interface Product {
 export interface ModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  products: Product[] | null;
 }
 
 export interface ProductRequestProps {
@@ -20,7 +19,6 @@ export interface ProductRequestProps {
 export interface navbarProps {
   activeCategory: string;
   handleCategoryChange: (category: string) => void;
-  products: Product[] | null;
 }
 
 export interface loginResponse {

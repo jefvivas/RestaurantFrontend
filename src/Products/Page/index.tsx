@@ -6,10 +6,12 @@ import Navbar from "../../Navbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
 import { getAllProducts } from "../../Services/Product";
 import { Product } from "../../Interfaces";
+import { useProduct } from "../../Contexts/Products";
 
 const Products = () => {
   const isAuthenticated = useAuth();
-  const [products, setProducts] = useState<Product[] | null>(null);
+  const { products, setProducts } = useProduct();
+
   const [productQuantities, setProductQuantities] = useState<{
     [productId: string]: number;
   }>({});
@@ -29,7 +31,7 @@ const Products = () => {
     };
 
     fetchData();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, setProducts]);
 
   const handleQuantityChange = (productId: string, newQuantity: number) => {
     setProductQuantities({
@@ -61,7 +63,6 @@ const Products = () => {
       <Navbar
         activeCategory={activeCategory}
         handleCategoryChange={handleCategoryChange}
-        products={products}
       />
       {products && (
         <>

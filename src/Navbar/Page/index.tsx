@@ -10,11 +10,7 @@ import Modal from "../../Components/Modal/Page";
 import { FiClock } from "react-icons/fi";
 import { navbarProps } from "../../Interfaces";
 
-const Navbar = ({
-  activeCategory,
-  handleCategoryChange,
-  products,
-}: navbarProps) => {
+const Navbar = ({ activeCategory, handleCategoryChange }: navbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -49,7 +45,7 @@ const Navbar = ({
           <OrderButtonText>Order History</OrderButtonText>
         </OrderButtonContainer>
       </OrderButton>
-      <Modal isOpen={isOpen} closeModal={closeModal} products={products} />
+      <Modal isOpen={isOpen} closeModal={closeModal} />
     </NavbarContainer>
   );
 };

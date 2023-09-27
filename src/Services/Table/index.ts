@@ -4,17 +4,12 @@ import { getToken } from "../../Utils";
 import { ProductRequestItems, ProductRequestProps } from "../../Interfaces";
 import { logError } from "../Log";
 
-export const productsRequest = async ({
-  productId,
-  quantity,
-}: ProductRequestProps) => {
+export const productsRequest = async (cart: ProductRequestProps[]) => {
   const requestPayload = {
-    Items: [
-      {
-        productId,
-        quantity,
-      },
-    ],
+    Items: cart.map((product) => ({
+      productId: product.productId,
+      quantity: product.quantity,
+    })),
   };
   const token = getToken();
 

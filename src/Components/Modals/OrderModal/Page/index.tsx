@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTableProducts } from "../../../Services/Table";
+import { getTableProducts } from "../../../../Services/Table";
 import {
   CloseButton,
   ItemSection,
@@ -12,8 +12,8 @@ import {
   ProductList,
   TotalSection,
 } from "../Styles";
-import { ModalProps, ProductRequestProps } from "../../../Interfaces";
-import { useProduct } from "../../../Contexts/Products";
+import { ModalProps, ProductRequestProps } from "../../../../Interfaces";
+import { useProduct } from "../../../../Contexts/Products";
 
 const Modal = ({ isOpen, closeModal }: ModalProps) => {
   const [tableProducts, setTableProducts] = useState<ProductRequestProps[]>([]);

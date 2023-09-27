@@ -49,3 +49,13 @@ export const OrderButtonContainer = styled.div`
 export const OrderButtonText = styled.span`
   margin-left: 8px;
 `;
+
+export const CartButton = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-left: 10px;
+`;

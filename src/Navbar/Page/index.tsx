@@ -4,21 +4,26 @@ import {
   OrderButton,
   OrderButtonContainer,
   OrderButtonText,
+  CartButton,
 } from "../Styles";
 import { useState } from "react";
-import Modal from "../../Components/Modal/Page";
-import { FiClock } from "react-icons/fi";
+import OrderModal from "../../Components/Modals/OrderModal/Page";
+import CartModal from "../../Components/Modals/CartModal/Page";
+import { FiClock, FiShoppingCart } from "react-icons/fi";
 import { navbarProps } from "../../Interfaces";
 
 const Navbar = ({ activeCategory, handleCategoryChange }: navbarProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
+  const [isOrderListOpen, setIsOrderListOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const toggleOrderModal = () => {
+    setIsOrderListOpen(!isOrderListOpen);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
+  const toggleCartModal = () => {
+    setIsCartOpen(!isCartOpen);
   };
+
   return (
     <NavbarContainer>
       <CategoryButton
@@ -39,13 +44,17 @@ const Navbar = ({ activeCategory, handleCategoryChange }: navbarProps) => {
       >
         Service
       </CategoryButton>
-      <OrderButton onClick={openModal}>
+      <OrderButton onClick={toggleOrderModal}>
         <OrderButtonContainer>
           <FiClock size={20} />
           <OrderButtonText>Order History</OrderButtonText>
         </OrderButtonContainer>
       </OrderButton>
-      <Modal isOpen={isOpen} closeModal={closeModal} />
+      <CartButton onClick={toggleCartModal}>
+        <FiShoppingCart size={20} />
+      </CartButton>
+      <OrderModal isOpen={isOrderListOpen} closeModal={toggleOrderModal} />
+      <CartModal isOpen={isCartOpen} closeModal={toggleCartModal} />
     </NavbarContainer>
   );
 };

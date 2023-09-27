@@ -7,10 +7,9 @@ import {
   QuantityInput,
   Description,
 } from "../Styles/index";
-import { useState } from "react";
 import RequestButton from "../../Components/RequestButton";
-import { productsRequest } from "../../Services/Table";
 import { ProductCardProps } from "../../Interfaces";
+import { useCart } from "../../Contexts/Cart";
 
 const ProductCard = ({
   id,
@@ -20,7 +19,7 @@ const ProductCard = ({
   quantity,
   setQuantity,
 }: ProductCardProps) => {
-  const [loading, setLoading] = useState(false);
+  const { cart, setCart } = useCart();
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
@@ -31,17 +30,22 @@ const ProductCard = ({
       setQuantity(quantity - 1);
     }
   };
-  const handleRequest = async () => {
+  const handleAddToCart = async () => {
     if (quantity <= 0) return;
-    setLoading(true);
 
-    try {
-      await productsRequest({ productId: id, quantity });
-      setQuantity(0);
-    } catch (e) {
-      console.log(`error : ${e}`);
+    const existingCartItemIndex = cart.findIndex(
+      (item) => item.productId === id
+    );
+
+    if (existingCartItemIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingCartItemIndex].quantity += quantity;
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { productId: id, quantity }]);
     }
-    setLoading(false);
+
+    setQuantity(0);
   };
 
   return (
@@ -63,11 +67,7 @@ const ProductCard = ({
           </QuantityControlButton>
         </QuantityControlWrapper>
       </PriceContainer>
-      <RequestButton
-        onClick={handleRequest}
-        isLoading={loading}
-        text="Request"
-      />
+      <RequestButton onClick={handleAddToCart} text="Add to Cart" />
     </PageContent>
   );
 };

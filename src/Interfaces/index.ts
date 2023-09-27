@@ -51,7 +51,7 @@ export interface ProductCardProps {
 }
 
 export interface RequestButtonProps {
-  isLoading: boolean;
+  isLoading?: boolean;
   onClick: (e: React.FormEvent<HTMLButtonElement>) => void;
   text: string;
 }

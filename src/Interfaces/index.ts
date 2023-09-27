@@ -60,3 +60,13 @@ export interface logErrorProps {
   type: string;
   message: string;
 }
+
+interface OrderItem {
+  productId: string;
+  quantity: number;
+}
+
+export interface logOrderProps {
+  orderedItems: OrderItem[];
+  total: number;
+}

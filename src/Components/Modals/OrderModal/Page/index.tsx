@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTableProducts } from "../../../../Services/Table";
+import { logError, logOrder } from "../../../../Services/Log";
 import {
   CloseButton,
   ItemSection,
@@ -55,6 +56,16 @@ const Modal = ({ isOpen, closeModal }: ModalProps) => {
   };
   if (!isOpen) return null;
 
+  const handlePay = async () => {
+    try {
+      await logOrder({ orderedItems: tableProducts, total: totalPrice });
+      setTableProducts([]);
+      setTotalPrice(0);
+    } catch (e: any) {
+      await logError({ message: e.message, type: "log_error" });
+    }
+  };
+
   return (
     <ModalOverlay onClick={handleCloseModal}>
       <ModalContent>
@@ -80,7 +91,7 @@ const Modal = ({ isOpen, closeModal }: ModalProps) => {
               );
             })
           ) : (
-            <p>Carregando produtos...</p>
+            <></>
           )}
           {totalPrice > 0 && (
             <ProductLine>
@@ -90,8 +101,8 @@ const Modal = ({ isOpen, closeModal }: ModalProps) => {
           )}
         </ProductList>
         <PayCloseButtonContainer>
-          <PayButton>Pagar</PayButton>
-          <CloseButton onClick={closeModal}>Fechar</CloseButton>
+          <PayButton onClick={handlePay}>Pay</PayButton>
+          <CloseButton onClick={closeModal}>Close</CloseButton>
         </PayCloseButtonContainer>
       </ModalContent>
     </ModalOverlay>

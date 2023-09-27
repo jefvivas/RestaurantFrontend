@@ -17,19 +17,6 @@ export const NavbarContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-export const CategoryButton = styled.button`
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 export const OrderButton = styled.button`
   top: 0px;
   right: 0px;

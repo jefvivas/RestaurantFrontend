@@ -9,9 +9,8 @@ import { useState } from "react";
 import OrderModal from "../../Components/Modals/OrderModal/Page";
 import CartModal from "../../Components/Modals/CartModal/Page";
 import { FiClock, FiShoppingCart } from "react-icons/fi";
-import { navbarProps } from "../../Interfaces";
 
-const Navbar = ({ activeCategory, handleCategoryChange }: navbarProps) => {
+const Navbar = () => {
   const [isOrderListOpen, setIsOrderListOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 

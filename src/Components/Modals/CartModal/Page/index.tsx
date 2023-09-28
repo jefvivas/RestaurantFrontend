@@ -15,9 +15,10 @@ import { ModalProps } from "../../../../Interfaces";
 import { useProduct } from "../../../../Contexts/Products";
 import { useCart } from "../../../../Contexts/Cart";
 import { productsRequest } from "../../../../Services/Table";
+import { logError } from "../../../../Services/Log";
 
 const CartModal = ({ isOpen, closeModal }: ModalProps) => {
-  const { cart } = useCart();
+  const { cart, setCart } = useCart();
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const { products } = useProduct();
@@ -46,7 +47,13 @@ const CartModal = ({ isOpen, closeModal }: ModalProps) => {
   if (!isOpen) return null;
 
   const handleSendRequest = async () => {
-    await productsRequest(cart);
+    try {
+      await productsRequest(cart);
+      setCart([]);
+      setTotalPrice(0);
+    } catch (e: any) {
+      await logError({ type: "product_request_error", message: e.message });
+    }
   };
   return (
     <ModalOverlay onClick={handleCloseModal}>

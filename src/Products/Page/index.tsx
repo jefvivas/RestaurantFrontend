@@ -15,7 +15,6 @@ const Products = () => {
   const [productQuantities, setProductQuantities] = useState<{
     [productId: string]: number;
   }>({});
-  const [activeCategory, setActiveCategory] = useState<string>("Food");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +39,6 @@ const Products = () => {
     });
   };
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-  };
-
   if (!isAuthenticated) {
     return <Navigate to="/" />;
   }
@@ -60,10 +55,7 @@ const Products = () => {
 
   return (
     <PageContainer>
-      <Navbar
-        activeCategory={activeCategory}
-        handleCategoryChange={handleCategoryChange}
-      />
+      <Navbar />
       {products && (
         <>
           {getUniqueCategories(products).map((category) => (

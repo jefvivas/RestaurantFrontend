@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTableProducts } from "../../../../Services/Table";
+import { getTableProducts, resetTable } from "../../../../Services/Table";
 import { logError, logOrder } from "../../../../Services/Log";
 import {
   CloseButton,
@@ -15,12 +15,15 @@ import {
 } from "../Styles";
 import { ModalProps, ProductRequestProps } from "../../../../Interfaces";
 import { useProduct } from "../../../../Contexts/Products";
+import { removeToken, getDecodedToken, getToken } from "../../../../Utils";
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({ isOpen, closeModal }: ModalProps) => {
   const [tableProducts, setTableProducts] = useState<ProductRequestProps[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const { products } = useProduct();
+  const navigate = useNavigate();
 
   const getProducts = async () => {
     const response = await getTableProducts();
@@ -57,10 +60,15 @@ const Modal = ({ isOpen, closeModal }: ModalProps) => {
   if (!isOpen) return null;
 
   const handlePay = async () => {
+    const token = getToken();
+    const decodedToken = getDecodedToken(token);
     try {
       await logOrder({ orderedItems: tableProducts, total: totalPrice });
+      await resetTable(decodedToken);
       setTableProducts([]);
       setTotalPrice(0);
+      removeToken();
+      navigate("/");
     } catch (e: any) {
       await logError({ message: e.message, type: "log_error" });
     }

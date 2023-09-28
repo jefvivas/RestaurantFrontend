@@ -41,3 +41,17 @@ export const getTableProducts = async (): Promise<ProductRequestItems> => {
     return {} as ProductRequestItems;
   }
 };
+
+export const resetTable = async (id: string): Promise<void> => {
+  const token = getToken();
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  try {
+    await axios.put(`${API_URL}/table/${id}`, [], { headers });
+    return;
+  } catch (error: any) {
+    await logError({ type: "reset_table_error", message: error.message });
+    return;
+  }
+};

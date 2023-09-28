@@ -16,11 +16,6 @@ export interface ProductRequestProps {
   quantity: number;
 }
 
-export interface navbarProps {
-  activeCategory: string;
-  handleCategoryChange: (category: string) => void;
-}
-
 export interface loginResponse {
   message?: string;
   token?: string;
@@ -29,11 +24,6 @@ export interface loginResponse {
 export interface loginProps {
   number: string;
   password: string;
-}
-
-export interface ProductRequestProps {
-  productId: string;
-  quantity: number;
 }
 
 export interface ProductRequestItems {
@@ -69,4 +59,11 @@ interface OrderItem {
 export interface logOrderProps {
   orderedItems: OrderItem[];
   total: number;
+}
+
+export interface JwtPayload {
+  unique_name: string;
+  nbf: number;
+  exp: number;
+  iat: number;
 }

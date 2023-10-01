@@ -21,8 +21,13 @@ export interface loginResponse {
   token?: string;
 }
 
-export interface loginProps {
+export interface tableLoginProps {
   number: string;
+  password: string;
+}
+
+export interface adminLoginProps {
+  username: string;
   password: string;
 }
 

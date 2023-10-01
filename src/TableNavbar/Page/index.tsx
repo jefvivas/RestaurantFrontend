@@ -10,7 +10,7 @@ import OrderModal from "../../Components/Modals/OrderModal/Page";
 import CartModal from "../../Components/Modals/CartModal/Page";
 import { FiClock, FiShoppingCart } from "react-icons/fi";
 
-const Navbar = () => {
+const TableNavbar = () => {
   const [isOrderListOpen, setIsOrderListOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -39,4 +39,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default TableNavbar;

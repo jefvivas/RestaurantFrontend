@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { InputField, LoginContainer, LoginForm } from "../Styles";
 import RequestButton from "../../Components/RequestButton";
 import { tableLogin } from "../../Services/Login/index";
+import { setToken } from "../../Utils";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const LoginPage = () => {
 
       if (response.token && response.hasOwnProperty("token")) {
         const token = response.token;
-        localStorage.setItem("token", token);
+        setToken(token);
 
         redirectToOtherPage();
       }

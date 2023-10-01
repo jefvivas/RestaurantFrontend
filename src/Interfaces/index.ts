@@ -72,3 +72,11 @@ export interface JwtPayload {
   exp: number;
   iat: number;
 }
+
+export interface createProductProps {
+  name: string;
+  price: number;
+  description: string;
+  category: string;
+  isActive: boolean;
+}

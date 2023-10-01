@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { InputField, LoginContainer, LoginForm } from "../Styles";
 import RequestButton from "../../Components/RequestButton";
 import { adminLogin } from "../../Services/Login/index";
+import { setAdminToken } from "../../Utils";
 
 const AdminLoginPage = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const AdminLoginPage = () => {
 
       if (response.token && response.hasOwnProperty("token")) {
         const token = response.token;
-        localStorage.setItem("token", token);
+        setAdminToken(token);
 
         redirectToOtherPage();
       }

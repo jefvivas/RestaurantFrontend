@@ -2,7 +2,7 @@ import useAuth from "../../Hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductCard from "../../ProductCard/Page";
-import Navbar from "../../Navbar/Page";
+import Navbar from "../../TableNavbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
 import { getAllProducts } from "../../Services/Product";
 import { Product } from "../../Interfaces";

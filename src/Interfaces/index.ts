@@ -80,3 +80,7 @@ export interface createProductProps {
   category: string;
   isAvailable: boolean;
 }
+
+export interface getProductsProps {
+  onlyAvailable: boolean;
+}

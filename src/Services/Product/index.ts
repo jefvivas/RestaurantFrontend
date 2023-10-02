@@ -2,44 +2,25 @@ import axios, { AxiosResponse } from "axios";
 import { API_URL } from "../../Constants";
 import { getToken, getAdminToken } from "../../Utils";
 import { Product } from "../../Interfaces";
-import { createProductProps } from "../../Interfaces";
+import { createProductProps, getProductsProps } from "../../Interfaces";
 
-export const getAllProducts = async (): Promise<Product[]> => {
+export const getProducts = async ({
+  onlyAvailable,
+}: getProductsProps): Promise<Product[]> => {
   const token = getToken();
+
+  const url = onlyAvailable
+    ? `${API_URL}/product?onlyAvailable=true`
+    : `${API_URL}/product`;
 
   const headers = {
     Authorization: `Bearer ${token}`,
   };
 
   try {
-    const response: AxiosResponse<Product[]> = await axios.get(
-      `${API_URL}/product`,
-      {
-        headers,
-      }
-    );
-
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return [] as Product[];
-  }
-};
-
-export const getAllAvailableProducts = async (): Promise<Product[]> => {
-  const token = getToken();
-
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
-
-  try {
-    const response: AxiosResponse<Product[]> = await axios.get(
-      `${API_URL}/availableproduct`,
-      {
-        headers,
-      }
-    );
+    const response: AxiosResponse<Product[]> = await axios.get(url, {
+      headers,
+    });
 
     return response.data;
   } catch (error) {

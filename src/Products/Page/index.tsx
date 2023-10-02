@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../ProductCard/Page";
 import Navbar from "../../TableNavbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
-import { getAllAvailableProducts } from "../../Services/Product";
+import { getProducts } from "../../Services/Product";
 import { Product } from "../../Interfaces";
 import { useProduct } from "../../Contexts/Products";
 
@@ -19,7 +19,7 @@ const Products = () => {
     const fetchData = async () => {
       if (isAuthenticated) {
         try {
-          const productsResponse = await getAllAvailableProducts();
+          const productsResponse = await getProducts({ onlyAvailable: true });
 
           setProducts(productsResponse);
         } catch (error) {

@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../ProductCard/Page";
 import Navbar from "../../TableNavbar/Page";
 import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
-import { getAllProducts } from "../../Services/Product";
+import { getAllAvailableProducts } from "../../Services/Product";
 import { Product } from "../../Interfaces";
 import { useProduct } from "../../Contexts/Products";
 
 const Products = () => {
   const isAuthenticated = useAuth();
   const { products, setProducts } = useProduct();
-
   const [productQuantities, setProductQuantities] = useState<{
     [productId: string]: number;
   }>({});
@@ -20,7 +19,7 @@ const Products = () => {
     const fetchData = async () => {
       if (isAuthenticated) {
         try {
-          const productsResponse = await getAllProducts();
+          const productsResponse = await getAllAvailableProducts();
 
           setProducts(productsResponse);
         } catch (error) {

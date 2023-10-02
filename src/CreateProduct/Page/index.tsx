@@ -20,7 +20,7 @@ const CreateProduct = () => {
     price: "",
     description: "",
     category: "Drink",
-    isActive: true,
+    isAvailable: true,
   });
 
   const [showModalMessage, setShowModalMessage] = useState(false);
@@ -109,15 +109,15 @@ const CreateProduct = () => {
           </CategorySelect>
         </FormGroup>
         <FormGroup>
-          <Label>Active</Label>
+          <Label>Available</Label>
           <RadioGroup>
             <RadioButton>
               <input
                 type="radio"
                 id="isActiveTrue"
-                name="isActive"
+                name="isAvailable"
                 value="true"
-                checked={formData.isActive}
+                checked={formData.isAvailable}
                 onChange={handleRadioChange}
               />
               <span>Yes</span>
@@ -126,9 +126,9 @@ const CreateProduct = () => {
               <input
                 type="radio"
                 id="isActiveFalse"
-                name="isActive"
+                name="isAvailable"
                 value="false"
-                checked={!formData.isActive}
+                checked={!formData.isAvailable}
                 onChange={handleRadioChange}
               />
               <span>No</span>

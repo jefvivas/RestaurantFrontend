@@ -78,5 +78,5 @@ export interface createProductProps {
   price: number;
   description: string;
   category: string;
-  isActive: boolean;
+  isAvailable: boolean;
 }

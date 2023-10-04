@@ -6,8 +6,8 @@ import {
   QuantityControlWrapper,
   QuantityInput,
   Description,
-} from "../Styles/index";
-import RequestButton from "../../Components/RequestButton";
+} from "./styles";
+import RequestButton from "../RequestButton";
 import { ProductCardProps } from "../../Interfaces";
 import { useCart } from "../../Contexts/Cart";
 

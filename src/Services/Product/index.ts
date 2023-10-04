@@ -8,14 +8,16 @@ export const getProducts = async ({
   onlyAvailable,
 }: getProductsProps): Promise<Product[]> => {
   const token = getToken();
+  const adminToken = getAdminToken();
 
   const url = onlyAvailable
     ? `${environment.API_URL}/product?onlyAvailable=true`
     : `${environment.API_URL}/product`;
 
   const headers = {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${token || adminToken}`,
   };
+  console.log(url,headers)
 
   try {
     const response: AxiosResponse<Product[]> = await axios.get(url, {

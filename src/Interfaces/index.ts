@@ -1,3 +1,5 @@
+import { Column } from 'react-table';
+
 export interface Product {
   id: string;
   name: string;
@@ -83,4 +85,9 @@ export interface createProductProps {
 
 export interface getProductsProps {
   onlyAvailable: boolean;
+}
+
+export interface ProductTableProps {
+  data: Product[]; 
+  columns: Column<Product>[];
 }

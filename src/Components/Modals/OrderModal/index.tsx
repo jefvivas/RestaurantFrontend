@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getTableProducts, resetTable } from "../../../../Services/Table";
-import { logError, logOrder } from "../../../../Services/Log";
+import { getTableProducts, resetTable } from "../../../Services/Table";
+import { logError, logOrder } from "../../../Services/Log";
 import {
   CloseButton,
   ItemSection,
@@ -12,10 +12,10 @@ import {
   ProductLine,
   ProductList,
   TotalSection,
-} from "../Styles";
-import { ModalProps, ProductRequestProps } from "../../../../Interfaces";
-import { useProduct } from "../../../../Contexts/Products";
-import { removeToken, getDecodedToken, getToken } from "../../../../Utils";
+} from "./styles";
+import { ModalProps, ProductRequestProps } from "../../../Interfaces";
+import { useProduct } from "../../../Contexts/Products";
+import { removeToken, getDecodedToken, getToken } from "../../../Utils";
 import { useNavigate } from "react-router-dom";
 
 const Modal = ({ isOpen, closeModal }: ModalProps) => {

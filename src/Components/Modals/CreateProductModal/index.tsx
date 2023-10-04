@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { createProduct } from "../../Services/Product";
-import ResponseModal from "../../Components/Modals/ResponseModal/Page";
+import { createProduct } from "../../../Services/Product";
+import ResponseModal from "../ResponseModal";
 import {
   Button,
   CategorySelect,
@@ -12,7 +12,7 @@ import {
   RadioButton,
   RadioGroup,
   TextArea,
-} from "../Styles";
+} from "./styles";
 
 const CreateProduct = () => {
   const [formData, setFormData] = useState({

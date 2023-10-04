@@ -4,10 +4,10 @@ import {
   OrderButtonContainer,
   OrderButtonText,
   CartButton,
-} from "../Styles";
+} from "./styles";
 import { useState } from "react";
-import OrderModal from "../../Components/Modals/OrderModal/Page";
-import CartModal from "../../Components/Modals/CartModal/Page";
+import OrderModal from "../Components/Modals/OrderModal";
+import CartModal from "../Components/Modals/CartModal";
 import { FiClock, FiShoppingCart } from "react-icons/fi";
 
 const TableNavbar = () => {

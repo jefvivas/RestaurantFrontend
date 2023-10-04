@@ -1,28 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { InputField, LoginContainer, LoginForm } from "../Styles";
+import { InputField, LoginContainer, LoginForm } from "./styles";
 import RequestButton from "../../Components/RequestButton";
-import { adminLogin } from "../../Services/Login/index";
-import { setAdminToken } from "../../Utils";
+import { tableLogin } from "../../Services/Login/index";
+import { setToken } from "../../Utils";
 
-const AdminLoginPage = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
 
   const redirectToOtherPage = () => {
-    navigate("/admin/services");
+    navigate("/products");
   };
 
-  const [username, setUsername] = useState("");
+  const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const response = await adminLogin({ username, password });
+      const response = await tableLogin({ number, password });
 
       if (response.token && response.hasOwnProperty("token")) {
         const token = response.token;
-        setAdminToken(token);
+        setToken(token);
 
         redirectToOtherPage();
       }
@@ -34,12 +34,12 @@ const AdminLoginPage = () => {
   return (
     <LoginContainer>
       <LoginForm>
-        <h2>Admin Login</h2>
+        <h2>Login</h2>
         <InputField
           type="text"
-          placeholder="admin"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Mesa"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
         />
         <InputField
           type="password"
@@ -53,4 +53,4 @@ const AdminLoginPage = () => {
   );
 };
 
-export default AdminLoginPage;
+export default LoginPage;

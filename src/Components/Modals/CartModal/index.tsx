@@ -10,12 +10,12 @@ import {
   ProductLine,
   ProductList,
   TotalSection,
-} from "../Styles";
-import { ModalProps } from "../../../../Interfaces";
-import { useProduct } from "../../../../Contexts/Products";
-import { useCart } from "../../../../Contexts/Cart";
-import { productsRequest } from "../../../../Services/Table";
-import { logError } from "../../../../Services/Log";
+} from "./styles";
+import { ModalProps } from "../../../Interfaces";
+import { useProduct } from "../../../Contexts/Products";
+import { useCart } from "../../../Contexts/Cart";
+import { productsRequest } from "../../../Services/Table";
+import { logError } from "../../../Services/Log";
 
 const CartModal = ({ isOpen, closeModal }: ModalProps) => {
   const { cart, setCart } = useCart();

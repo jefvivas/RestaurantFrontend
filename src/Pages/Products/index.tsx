@@ -1,9 +1,9 @@
 import useAuth from "../../Hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ProductCard from "../../ProductCard/Page";
-import Navbar from "../../TableNavbar/Page";
-import { CategoryHeader, GroupContainer, PageContainer } from "../Styles";
+import ProductCard from "../../Components/ProductCard";
+import Navbar from "../../TableNavbar";
+import { CategoryHeader, GroupContainer, PageContainer } from "./styles";
 import { getProducts } from "../../Services/Product";
 import { Product } from "../../Interfaces";
 import { useProduct } from "../../Contexts/Products";

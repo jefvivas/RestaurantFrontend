@@ -1,4 +1,4 @@
-import { ModalContent, ModalOverlay } from "../Styles";
+import { ModalContent, ModalOverlay } from "./styles";
 
 interface responseModalProps {
   onClose: () => void;

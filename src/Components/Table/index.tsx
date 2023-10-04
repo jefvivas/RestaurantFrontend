@@ -1,30 +1,23 @@
-import { useTable } from 'react-table';
-import {Product,ProductTableProps} from '../../Interfaces'
-import {Table,TableCell,TableHeader,TableRow} from '../Table/styles'
+import { useTable } from "react-table";
+import { Product, ProductTableProps } from "../../Interfaces";
+import { Table, TableCell, TableHeader, TableRow } from "../Table/styles";
 
-const ProductTable = ({ data,columns }: ProductTableProps) => {
-  
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable<Product>({
-    columns,
-    data,
-  });
+const ProductTable = ({ data, columns }: ProductTableProps) => {
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable<Product>({
+      columns,
+      data,
+    });
 
   return (
     <Table {...getTableProps()} className="my-table">
       <thead>
-        {headerGroups.map(headerGroup => (
+        {headerGroups.map((headerGroup) => (
           <TableRow {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => {
+            {headerGroup.headers.map((column) => {
               return (
                 <TableHeader {...column.getHeaderProps()}>
-                  {column.render('Header')}
+                  {column.render("Header")}
                 </TableHeader>
               );
             })}
@@ -32,18 +25,16 @@ const ProductTable = ({ data,columns }: ProductTableProps) => {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
+        {rows.map((row) => {
           prepareRow(row);
           return (
             <TableRow {...row.getRowProps()}>
-              {row.cells.map(cell => {
+              {row.cells.map((cell) => {
                 return (
                   <TableCell {...cell.getCellProps()}>
-                    {cell.column.id === 'actions' ? (
-                      cell.render('Cell')
-                    ) : (
-                      cell.render('Cell')
-                    )}
+                    {cell.column.id === "actions"
+                      ? cell.render("Cell")
+                      : cell.render("Cell")}
                   </TableCell>
                 );
               })}
@@ -53,6 +44,6 @@ const ProductTable = ({ data,columns }: ProductTableProps) => {
       </tbody>
     </Table>
   );
-}
+};
 
 export default ProductTable;

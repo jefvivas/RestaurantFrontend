@@ -1,17 +1,15 @@
 import ProductTable from "../../Components/Table/index";
-import {CellProps, Column} from 'react-table'
-import {Product} from '../../Interfaces'
-import {useProduct} from '../../Contexts/Products'
+import { CellProps, Column } from "react-table";
+import { Product } from "../../Interfaces";
+import { useProduct } from "../../Contexts/Products";
 import useAdminAuth from "../../Hooks/useAdminAuth";
 import { useEffect } from "react";
 import { getProducts } from "../../Services/Product";
-import {MoreIcon} from './styles'
-
-
+import { MoreIcon } from "./styles";
 
 const AdminProducts = () => {
   const isAuthenticated = useAdminAuth();
-  const {products,setProducts} = useProduct()
+  const { products, setProducts } = useProduct();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,28 +33,34 @@ const AdminProducts = () => {
 
   const columns: Column<Product>[] = [
     {
-      Header: 'Name',
-      accessor: 'name',
+      Header: "Name",
+      accessor: "name",
     },
     {
-      Header: 'Price',
-      accessor: 'price',
+      Header: "Price",
+      accessor: "price",
     },
     {
-      Header: 'Description',
-      accessor: 'description',
+      Header: "Description",
+      accessor: "description",
     },
     {
-      Header: 'Category',
-      accessor: 'category',
+      Header: "Category",
+      accessor: "category",
     },
     {
-      Header: 'Action',
+      Header: "Available",
+      accessor: "isAvailable",
+      Cell: ({ row }: CellProps<Product, boolean | undefined>) => {
+        return row.original.isAvailable ? <span>Y</span> : <span>N</span>;
+      },
+    },
+    {
+      Header: "Action",
       Cell: ({ row }: CellProps<Product, string>) => (
-        <MoreIcon onClick={()=>handleAction(row.original)}/>
+        <MoreIcon onClick={() => handleAction(row.original)} />
       ),
     },
-    
   ];
 
   return (

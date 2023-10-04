@@ -11,13 +11,12 @@ export const getProducts = async ({
   const adminToken = getAdminToken();
 
   const url = onlyAvailable
-    ? `${environment.API_URL}/product?onlyAvailable=true`
-    : `${environment.API_URL}/product`;
+    ? `${environment.API_URL}/product`
+    : `${environment.API_URL}/product?onlyAvailable=false`;
 
   const headers = {
     Authorization: `Bearer ${token || adminToken}`,
   };
-  console.log(url,headers)
 
   try {
     const response: AxiosResponse<Product[]> = await axios.get(url, {

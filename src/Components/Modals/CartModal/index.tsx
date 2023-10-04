@@ -51,6 +51,7 @@ const CartModal = ({ isOpen, closeModal }: ModalProps) => {
       await productsRequest(cart);
       setCart([]);
       setTotalPrice(0);
+      closeModal();
     } catch (e: any) {
       await logError({ type: "product_request_error", message: e.message });
     }

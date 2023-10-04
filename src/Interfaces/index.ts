@@ -1,4 +1,4 @@
-import { Column } from 'react-table';
+import { Column } from "react-table";
 
 export interface Product {
   id: string;
@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   description: string;
   category: string;
+  isAvailable?: boolean;
 }
 
 export interface ModalProps {
@@ -88,6 +89,6 @@ export interface getProductsProps {
 }
 
 export interface ProductTableProps {
-  data: Product[]; 
+  data: Product[];
   columns: Column<Product>[];
 }

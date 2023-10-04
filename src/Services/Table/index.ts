@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { API_URL } from "../../Constants";
+import { environment } from "../../Constants";
 import { getToken } from "../../Utils";
 import { ProductRequestItems, ProductRequestProps } from "../../Interfaces";
 import { logError } from "../Log";
@@ -18,7 +18,9 @@ export const productsRequest = async (cart: ProductRequestProps[]) => {
   };
 
   try {
-    return await axios.post(`${API_URL}/consume`, requestPayload, { headers });
+    return await axios.post(`${environment.API_URL}/consume`, requestPayload, {
+      headers,
+    });
   } catch (error: any) {
     await logError({ type: "consume_error", message: error.message });
     console.log(error);
@@ -32,7 +34,7 @@ export const getTableProducts = async (): Promise<ProductRequestItems> => {
   };
   try {
     const response: AxiosResponse<ProductRequestItems> = await axios.get(
-      `${API_URL}/consume`,
+      `${environment.API_URL}/consume`,
       { headers }
     );
     return response.data;
@@ -48,7 +50,7 @@ export const resetTable = async (id: string): Promise<void> => {
     Authorization: `Bearer ${token}`,
   };
   try {
-    await axios.put(`${API_URL}/table/${id}`, [], { headers });
+    await axios.put(`${environment.API_URL}/table/${id}`, [], { headers });
     return;
   } catch (error: any) {
     await logError({ type: "reset_table_error", message: error.message });

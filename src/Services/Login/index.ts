@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { API_URL } from "../../Constants";
+import { environment } from "../../Constants";
 import {
   tableLoginProps,
   loginResponse,
@@ -13,7 +13,7 @@ export const tableLogin = async ({
 }: tableLoginProps): Promise<loginResponse> => {
   try {
     const response: AxiosResponse<loginResponse> = await axios.post(
-      `${API_URL}/login`,
+      `${environment.API_URL}/login`,
       { number, password }
     );
 
@@ -30,7 +30,7 @@ export const adminLogin = async ({
 }: adminLoginProps): Promise<loginResponse> => {
   try {
     const response: AxiosResponse<loginResponse> = await axios.post(
-      `${API_URL}/admin/login`,
+      `${environment.API_URL}/admin/login`,
       { username, password }
     );
 

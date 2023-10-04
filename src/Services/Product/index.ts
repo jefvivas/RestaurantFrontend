@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { API_URL } from "../../Constants";
+import { environment } from "../../Constants";
 import { getToken, getAdminToken } from "../../Utils";
 import { Product } from "../../Interfaces";
 import { createProductProps, getProductsProps } from "../../Interfaces";
@@ -10,8 +10,8 @@ export const getProducts = async ({
   const token = getToken();
 
   const url = onlyAvailable
-    ? `${API_URL}/product?onlyAvailable=true`
-    : `${API_URL}/product`;
+    ? `${environment.API_URL}/product?onlyAvailable=true`
+    : `${environment.API_URL}/product`;
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -37,9 +37,13 @@ export const createProduct = async (product: createProductProps) => {
   };
 
   try {
-    const response = await axios.post(`${API_URL}/product`, product, {
-      headers,
-    });
+    const response = await axios.post(
+      `${environment.API_URL}/product`,
+      product,
+      {
+        headers,
+      }
+    );
     return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 400) {

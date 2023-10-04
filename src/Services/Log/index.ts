@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../../Constants";
+import { environment } from "../../Constants";
 import { logErrorProps, logOrderProps } from "../../Interfaces";
 
 export const logError = async ({
@@ -7,7 +7,7 @@ export const logError = async ({
   message,
 }: logErrorProps): Promise<void> => {
   try {
-    await axios.post(`${API_URL}/errorlog`, {
+    await axios.post(`${environment.API_URL}/errorlog`, {
       type,
       message,
     });
@@ -19,7 +19,7 @@ export const logOrder = async ({
   total,
 }: logOrderProps): Promise<void> => {
   try {
-    await axios.post(`${API_URL}/orderlog`, {
+    await axios.post(`${environment.API_URL}/orderlog`, {
       orderedItems,
       total,
     });

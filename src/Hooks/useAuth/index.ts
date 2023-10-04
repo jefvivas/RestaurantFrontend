@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtVerify } from "jose";
+import { environment } from "../../Constants";
 
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -9,9 +10,7 @@ const useAuth = () => {
   useEffect(() => {
     const tokenIsValid = (token: string) => {
       try {
-        const secretKey = new TextEncoder().encode(
-          "08D856F45E32C98D0AA162BBD99E99D5"
-        );
+        const secretKey = new TextEncoder().encode(environment.TABLE_KEY);
         jwtVerify(token, secretKey);
 
         navigate("/products");

@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   description: string;
   category: string;
-  isAvailable?: boolean;
+  isAvailable: boolean;
 }
 
 export interface ModalProps {
@@ -82,6 +82,19 @@ export interface createProductProps {
   description: string;
   category: string;
   isAvailable: boolean;
+}
+
+export interface editProductProps {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  category: string;
+  isAvailable: boolean;
+}
+
+export interface deleteProductProps {
+  id: string;
 }
 
 export interface getProductsProps {
